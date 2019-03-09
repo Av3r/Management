@@ -4,17 +4,17 @@ package entity;
  * Created by Damia on 28.02.2019.
  */
 public class Boots extends Product {
-    private int size;
+    private Integer size;
     private boolean isNaturalSkin;
 
-    public Boots(Long id, String productName, String color, float price,
-                 float weight, int productCount, int size, boolean isNaturalSkin){
+    public Boots(Long id, String productName, String color, Float price,
+                 Float weight, Integer productCount, Integer size, boolean isNaturalSkin){
         super(id, productName, color, price, weight, productCount);
         this.size = size;
         this.isNaturalSkin = isNaturalSkin;
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
     public boolean isNaturalSkin(){

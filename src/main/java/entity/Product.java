@@ -3,12 +3,13 @@ package entity;
  * Created by Damia on 28.02.2019.
  */
 public class Product {
+    public final static String PROD_SEP = "#";
     private Long id;
     private String productName, color;
-    private float price, weight;
-    private int productCount;
+    private Float price, weight;
+    private Integer productCount;
 
-    public Product(Long id, String productName, String color, float price, float weight, int productCount){
+    public Product(Long id, String productName, String color, Float price, Float weight, Integer productCount){
         this.id = id;
         this.productName = productName;
         this.color = color;
@@ -37,28 +38,23 @@ public class Product {
         return color;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public float getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public int getProductCount() {
+    public Integer getProductCount() {
         return productCount;
     }
 
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", productName='" + productName + '\'' +
-                ", color='" + color + '\'' +
-                ", price=" + price +
-                ", weight=" + weight +
-                ", productCount=" + productCount +
-                '}';
+        return id + PROD_SEP + productName + PROD_SEP + color + PROD_SEP +
+                price + PROD_SEP + weight +
+                PROD_SEP + productCount;
     }
 }

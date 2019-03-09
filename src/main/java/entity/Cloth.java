@@ -7,7 +7,7 @@ public class Cloth extends Product {
     private String size;
     private String material;
 
-    public Cloth(Long id, String productName, String color, float price, float weight, int productCount, String size, String material){
+    public Cloth(Long id, String productName, String color, Float price, Float weight, Integer productCount, String size, String material){
         super(id, productName, color, price, weight, productCount);
         this.size = size;
         this.material = material;
