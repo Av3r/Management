@@ -3,6 +3,7 @@ package entity;
  * Created by Damia on 28.02.2019.
  */
 public class User {
+    public final static String USER_SEP = "#";
     private Long id;
     private String login, password;
 
@@ -26,10 +27,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return id + USER_SEP + login + USER_SEP + password;
     }
 }
