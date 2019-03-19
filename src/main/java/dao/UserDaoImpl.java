@@ -29,6 +29,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void saveUsers(List<User> users) throws IOException{
+        FileUtils.clearFile(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(fileName);
         PrintWriter printWriter = new PrintWriter(fileOutputStream);
         for(User user : users){
@@ -49,6 +50,7 @@ public class UserDaoImpl implements UserDao {
                 users.add(user);
             }
         }
+        reader.close();
         return users;
     }
 
@@ -64,7 +66,7 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    public User getUserById(String userId) throws IOException{
+    public User getUserById(Long userId) throws IOException{
         List<User> users = getAllUsers();
 
         for(User user: users){
@@ -97,6 +99,6 @@ public class UserDaoImpl implements UserDao {
                 users.remove(i);
             }
         }
-        saveUser(users);
+        saveUsers(users);
     }
 }

@@ -28,7 +28,8 @@ public class ProductDaoImpl implements ProductDao{
         saveProducts(products);
     }
 
-    public void saveProducts(List<Product> products) throws IOException{
+    public void saveProducts(List<Product> products) throws FileNotFoundException{
+        FileUtils.clearFile(fileName);
         FileOutputStream fileOutputStream = new FileOutputStream(fileName, true);
         PrintWriter printWriter = new PrintWriter(fileOutputStream);
         for(Product product : products){
@@ -72,7 +73,9 @@ public class ProductDaoImpl implements ProductDao{
             if(product != null){
                 products.add(product);
             }
+            readLine = reader.readLine();
         }
+        reader.close();
         return products;
     }
 
@@ -80,7 +83,7 @@ public class ProductDaoImpl implements ProductDao{
         List<Product> products = getAllProducts();
 
         for(Product product : products){
-            boolean isFoundProduct = product.getId().equals(productId)
+            boolean isFoundProduct = product.getId().equals(productId);
             if(isFoundProduct) {
                 return product;
             }
