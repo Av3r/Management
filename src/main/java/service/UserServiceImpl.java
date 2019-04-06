@@ -1,8 +1,12 @@
 package service;
 
+import api.UserDao;
 import api.UserService;
+import dao.UserDaoImpl;
 import entity.User;
+import validator.UserValidator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,18 +14,22 @@ import java.util.List;
  * Created by Damia on 05.03.2019.
  */
 public class UserServiceImpl implements UserService {
+    //List<User> users;
+    private static UserServiceImpl instance = null;
+    private UserDao userDao = UserDaoImpl.getInstance();
+    private UserValidator userValidator = UserValidator.getInstance();
 
-    List<User> users;
+    private UserServiceImpl(){}
 
-    public UserServiceImpl(){
-        this.users = new ArrayList<User>();
+    public static UserServiceImpl getInstance(){
+        if(instance == null){
+            instance = new UserServiceImpl();
+        }
+        return instance;
     }
-    public UserServiceImpl(List<User> users){
-        this.users = users;
-    }
 
-    public List<User> getAllUsers(){
-        return users;
+    public List<User> getAllUsers() throws IOException {
+        return userDao.getAllUsers();
     }
     public void addUser(User user){
         users.add(user);

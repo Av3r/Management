@@ -13,14 +13,31 @@ import java.util.List;
  * Created by Damia on 10.03.2019.
  */
 public class UserDaoImpl implements UserDao {
-    private final String fileName;
-    private String productType;
+    //private final String fileName;
+    private static final String fileName ="users.data";
+    private static UserDaoImpl instance = null;
+   // private String productType;
 
-    public UserDaoImpl(String fileName, String productType) throws IOException{
+   /* public UserDaoImpl(String fileName, String productType) throws IOException{
         this.fileName = fileName;
         this.productType = productType;
         FileUtils.createNewFile(fileName);
-    }
+    } */
+   private UserDaoImpl(){
+       try {
+           FileUtils.createNewFile(fileName);
+       } catch(IOException e){
+           System.out.println("Error with file path");
+           System.exit(-1);
+       }
+   }
+
+   public static UserDaoImpl getInstance(){
+       if(instance == null){
+           instance = new UserDaoImpl();
+       }
+       return instance;
+   }
 
     public void saveUser(User user) throws IOException{
         List<User> users = getAllUsers();
@@ -43,12 +60,14 @@ public class UserDaoImpl implements UserDao {
 
         FileReader fileReader = new FileReader(fileName);
         BufferedReader reader = new BufferedReader(fileReader);
+
         String readLine = reader.readLine();
         while(readLine != null){
-            User user = UserParser.stringToUser(readLine, productType);
-            if(user != null){
+            //User user = UserParser.stringToUser(readLine, productType);
+            User user = UserParser.stringToUser(readLine);
+            //if(user != null){
                 users.add(user);
-            }
+
         }
         reader.close();
         return users;
