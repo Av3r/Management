@@ -4,6 +4,7 @@ package entity;
  */
 public class Product {
     public final static String PROD_SEP = "#";
+    public final static char PRODUCT_TYPE = 'P';
     private Long id;
     private String productName, color;
     private Float price, weight;
@@ -51,10 +52,12 @@ public class Product {
     }
 
 
+    protected String getBasicProductString(){
+        return id + PROD_SEP + productName + PROD_SEP + color + PROD_SEP + price + PROD_SEP + weight + PROD_SEP + productCount;
+    }
+
     @Override
     public String toString() {
-        return id + PROD_SEP + productName + PROD_SEP + color + PROD_SEP +
-                price + PROD_SEP + weight +
-                PROD_SEP + productCount;
+        return PRODUCT_TYPE + PROD_SEP + getBasicProductString();
     }
 }

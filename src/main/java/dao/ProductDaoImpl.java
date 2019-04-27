@@ -14,16 +14,26 @@ import java.util.List;
  */
 public class ProductDaoImpl implements ProductDao{
     private String fileName;
-    private String productType;
-
+   // private String productType;
+/*
     public ProductDaoImpl(String fileName, String productType) {
         this.fileName = fileName;
-        this.productType = productType;
+       // this.productType = productType;
         try {
             FileUtils.createNewFile(fileName);
         } catch (IOException e){
             e.printStackTrace();
         }
+    }*/
+    private static ProductDaoImpl instance = null;
+
+    private ProductDaoImpl(){}
+
+    public static ProductDaoImpl getInstance(){
+        if(instance == null){
+            instance = new ProductDaoImpl();
+        }
+        return instance;
     }
 
     public void saveProduct(Product product) throws IOException{

@@ -4,6 +4,7 @@ package entity;
  * Created by Damia on 28.02.2019.
  */
 public class Cloth extends Product {
+    private final char PRODUCT_TYPE = 'C';
     private String size;
     private String material;
 
@@ -23,6 +24,6 @@ public class Cloth extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + PROD_SEP + size + PROD_SEP + material;
+        return PRODUCT_TYPE + PROD_SEP + getBasicProductString() + PROD_SEP + size + PROD_SEP + material;
     }
 }

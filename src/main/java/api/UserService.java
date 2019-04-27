@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserService {
     List<User> getAllUsers() throws IOException;
-    void addUser(User user);
-    void removeUserById(Long userId);
+    void addUser(User user) throws Exception;
+    void removeUserById(Long userId) throws IOException;
 
 }

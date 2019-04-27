@@ -21,10 +21,10 @@ public class UserValidator {
     private UserValidator(){}
 
     //User user;
-    static UserValidator instance = null;
+    private static UserValidator instance = null;
 
     public static UserValidator getInstance(){
-        if(instance.equals(null)){
+        if(instance == null){
             instance = new UserValidator();
         }
         return instance;

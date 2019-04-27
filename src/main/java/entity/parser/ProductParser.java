@@ -24,14 +24,16 @@ public class ProductParser {
     private static Boots convertToBoots(String productStr){
         String [] productInformations = productStr.split(Product.PROD_SEP);
 
-        Long id = Long.parseLong(productInformations[0]);
-        String productName = productInformations[1];
-        String color = productInformations[2];
-        Float price = Float.parseFloat(productInformations[3]);
-        Float weight = Float.parseFloat(productInformations[4]);
-        Integer productCount = Integer.parseInt(productInformations[5]);
-        Integer size = Integer.parseInt(productInformations[6]);
-        Boolean isNaturalSkin = Boolean.parseBoolean(productInformations[7]);
+        ProductType productType = productInformations[0];
+
+        Long id = Long.parseLong(productInformations[1]);
+        String productName = productInformations[2];
+        String color = productInformations[3];
+        Float price = Float.parseFloat(productInformations[4]);
+        Float weight = Float.parseFloat(productInformations[5]);
+        Integer productCount = Integer.parseInt(productInformations[6]);
+        Integer size = Integer.parseInt(productInformations[7]);
+        Boolean isNaturalSkin = Boolean.parseBoolean(productInformations[8]);
 
         return new Boots(id, productName,color,price, weight, productCount, size, isNaturalSkin);
     }

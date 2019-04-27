@@ -4,6 +4,7 @@ package entity;
  * Created by Damia on 28.02.2019.
  */
 public class Boots extends Product {
+    private final char PRODUCT_TYPE = 'B';
     private Integer size;
     private boolean isNaturalSkin;
 
@@ -23,6 +24,6 @@ public class Boots extends Product {
 
     @Override
     public String toString() {
-        return super.toString() + PROD_SEP + size + PROD_SEP + isNaturalSkin;
+        return PRODUCT_TYPE + PROD_SEP + getBasicProductString() + PROD_SEP + size + PROD_SEP + isNaturalSkin;
     }
 }
